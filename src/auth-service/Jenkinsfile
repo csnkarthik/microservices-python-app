@@ -1,6 +1,7 @@
 @Library('devops-projects-shared-lib') _
 
 pipeline {
+
     agent {
         label 'docker'
     }
@@ -13,13 +14,16 @@ pipeline {
         DOCKER_CREDENTIALS = credentials('docker_credentials')
     }
 
-    stage('git checkout'){            
-        when { expression { params.action == 'create' } }
-        steps {                
-            gitCheckout(
-                branch: 'main',
-                url: 'https://github.com/csnkarthik/microservices-python-app.git'
-            )
+    stages{
+        
+        stage('git checkout'){            
+                when { expression { params.action == 'create' } }
+                steps {                
+                    gitCheckout(
+                        branch: 'main',
+                        url: 'https://github.com/csnkarthik/microservices-python-app.git'
+                    )
+                }
         }
-    }
+    }    
 }
