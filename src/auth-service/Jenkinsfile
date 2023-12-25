@@ -15,7 +15,7 @@ pipeline {
     }
 
     stages{
-        
+
         stage('git checkout'){            
                 when { expression { params.action == 'create' } }
                 steps {                
@@ -25,5 +25,6 @@ pipeline {
                     )
                 }
         }
+       
     }    
 }
