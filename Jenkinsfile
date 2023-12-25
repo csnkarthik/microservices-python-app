@@ -15,6 +15,17 @@ pipeline {
     // }
 
     stages{
+        
+        stage('git checkout'){            
+                when { expression { params.action == 'create' } }
+                steps {                
+                    gitCheckout(
+                        branch: 'main',
+                        url: 'https://github.com/csnkarthik/microservices-python-app.git'
+                    )
+                }
+        }
+
         stage('move helm configs to the cluster'){
             when { expression { params.action == 'yes' } }            
             steps {         
