@@ -33,7 +33,7 @@ pipeline {
                 sshagent(['minikube_cluster']) {
                     sh """
                         ssh -o StrictHostKeyChecking=no gayathrik@192.168.0.104 
-                        ssh -o StrictHostKeyChecking=no gayathrik@192.168.0.104 mkdir -p ~/Desktop/installs/microservices-python-app 
+                        ssh -o StrictHostKeyChecking=no gayathrik@192.168.0.104 mkdir -p ~/Desktop/installs/microservices-python-app/Helm_charts
                         scp -r ${WORKSPACE}/Helm_charts gayathrik@192.168.0.104:~/Desktop/installs/microservices-python-app/
                     """
                 }
