@@ -26,19 +26,19 @@ pipeline {
                 }
         }
 
-        stage('move helm configs to the cluster'){
-            when { expression { params.action == 'yes' } }            
-            steps {         
-                input message: 'Are you sure you wanna proceed to deploy?', ok: 'Yes' 
-                sshagent(['minikube_cluster']) {
-                    sh """
-                        ssh -o StrictHostKeyChecking=no gayathrik@192.168.0.104 
-                        ssh -o StrictHostKeyChecking=no gayathrik@192.168.0.104 mkdir -p ~/Desktop/installs/microservices-python-app/Helm_charts
-                        scp -r ${WORKSPACE}/Helm_charts/ gayathrik@192.168.0.104:~/Desktop/installs/microservices-python-app/Helm_charts
-                    """
-                }
-            }
-        }
+        // stage('move helm configs to the cluster'){
+        //     when { expression { params.action == 'yes' } }            
+        //     steps {         
+        //         input message: 'Are you sure you wanna proceed to deploy?', ok: 'Yes' 
+        //         sshagent(['minikube_cluster']) {
+        //             sh """
+        //                 ssh -o StrictHostKeyChecking=no gayathrik@192.168.0.104 
+        //                 ssh -o StrictHostKeyChecking=no gayathrik@192.168.0.104 mkdir -p ~/Desktop/installs/microservices-python-app/Helm_charts
+        //                 scp -r ${WORKSPACE}/Helm_charts gayathrik@192.168.0.104:~/Desktop/installs/microservices-python-app/Helm_charts
+        //             """
+        //         }
+        //     }
+        // }
        
     }    
 }
